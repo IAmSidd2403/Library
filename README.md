@@ -29,8 +29,16 @@ This project was built as a **capstone** to demonstrate proficiency in **Node.js
 
 ## 🚀 Setup and Installation
 
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
 ### 2. Install dependencies
-```bash npm install ```
+```bash npm install
+```
 
 
 
@@ -41,23 +49,21 @@ This project was built as a **capstone** to demonstrate proficiency in **Node.js
 
 ---
 
-### 1. Clone the repository
 
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-```
 
 ### 3. Database setup
 
 **Create a PostgreSQL database and run the following SQL commands to create tables:**
+*users Table*
 ```sql
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL
-);```
-```bash
+);
+```
+*books table*
+```sql
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
@@ -71,7 +77,8 @@ CREATE TABLE books (
     created_at TIMESTAMP DEFAULT now(),
     updated_at TIMESTAMP DEFAULT now(),
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
-);```
+);
+```
 
 ### 4. Configure environment variables
 
@@ -83,7 +90,8 @@ PG_DATABASE=your_db_name
 PG_PASSWORD=your_db_password
 PG_PORT=5432
 PORT=3000
-OPEN_LIBRARY_API_URL=https://openlibrary.org/api/books.```
+OPEN_LIBRARY_API_URL=https://openlibrary.org/api/books.
+```
 
 ### 5. Run the application
 
@@ -91,12 +99,16 @@ OPEN_LIBRARY_API_URL=https://openlibrary.org/api/books.```
 
 **Terminal 1 – build Tailwind CSS:**
 ```bash
-npm run build:css```
+npm run build:css
+```
 
 
 **Terminal 2 – start the server:**
 ```bash
-nodemon index.js```
+nodemon index.js
+```
+---
+
 
 ## 📸 Screenshots
 
