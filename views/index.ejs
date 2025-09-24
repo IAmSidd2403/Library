@@ -1,0 +1,65 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container mx-auto p-5 bg-white rounded-lg shadow-lg max-w-4xl mt-10">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">My Bookshelf</h1>
+
+    <div class="flex justify-center gap-4 mb-8">
+        <a href="/?sort=recency" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-lg transition-colors">Sort by Recency</a>
+        <a href="/?sort=rating" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-lg transition-colors">Sort by Rating</a>
+    </div>
+
+</div>
+
+<div class="container mx-auto p-5 bg-white rounded-lg shadow-lg max-w-4xl mt-10">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">My Bookshelf</h1>
+    
+    <form action="/add" method="POST" class="flex flex-col gap-4 p-5 border border-gray-300 rounded-lg mb-8">
+        <h2 class="text-xl font-semibold text-gray-700">Add a New Book</h2>
+        <input type="text" name="title" placeholder="Title" required class="p-3 border border-gray-300 rounded-lg">
+        <input type="text" name="authors" placeholder="Author(s)" class="p-3 border border-gray-300 rounded-lg">
+        <input type="text" name="isbn" placeholder="ISBN (for cover image)" class="p-3 border border-gray-300 rounded-lg">
+        <input type="text" name="cover_id" placeholder="Open Library Cover ID" class="p-3 border border-gray-300 rounded-lg">
+        <input type="number" name="rating" placeholder="Rating (1-5)" min="1" max="5" class="p-3 border border-gray-300 rounded-lg">
+        <textarea name="review" placeholder="Your review" class="p-3 border border-gray-300 rounded-lg"></textarea>
+        <textarea name="notes" placeholder="Notes/Summary" class="p-3 border border-gray-300 rounded-lg"></textarea>
+        <input type="date" name="read_date" class="p-3 border border-gray-300 rounded-lg">
+        <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">Add Book</button>
+    </form>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+        <% if (books.length > 0) { %>
+            <% books.forEach(book => { %>
+                <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-md text-center">
+                    <a href="/books/<%= book.id %>">
+                        <% if (book.cover_id) { %>
+                            <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg" alt="Book cover" class="max-w-full h-auto rounded-md mb-4 mx-auto">
+                        <% } else if (book.isbn) { %>
+                            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="Book cover" class="max-w-full h-auto rounded-md mb-4 mx-auto">
+                        <% } else { %>
+                            <div class="w-full h-64 bg-gray-200 flex items-center justify-center rounded-md mb-4 text-gray-500">No Cover</div>
+                        <% } %>
+                    </a>
+                    <h2 class="text-lg font-bold text-gray-800"><%= book.title %></h2>
+                    <p class="text-gray-600">by <%= book.authors %></p>
+                    <p class="text-gray-600">Rating: <%= book.rating %>/5</p>
+                    <p class="text-gray-600">Read on: <%= new Date(book.read_date).toLocaleDateString() %></p>
+                    <p class="text-sm text-gray-500 mt-2">Review: <%= book.review %></p>
+                    <p class="text-sm text-gray-500 mt-2">Notes: <%= book.notes %></p>
+                    
+                    <div class="flex flex-col gap-2 mt-4">
+                        <form action="/edit/<%= book.id %>" method="GET">
+                            <button type="submit" class="bg-yellow-500 text-white font-bold py-1 px-3 rounded-lg hover:bg-yellow-600 transition-colors w-full">Edit</button>
+                        </form>
+                        <form action="/delete/<%= book.id %>" method="POST">
+                            <button type="submit" class="bg-red-500 text-white font-bold py-1 px-3 rounded-lg hover:bg-red-600 transition-colors w-full">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p class="col-span-full text-center text-gray-500">No books added yet.</p>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

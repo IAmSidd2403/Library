@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+<div class="container mx-auto p-5 bg-white rounded-lg shadow-lg max-w-lg mt-10">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Register</h1>
+    <form action="/register" method="POST" class="flex flex-col gap-4">
+        <input type="text" name="username" placeholder="Username" required class="p-3 border rounded-lg">
+        <input 
+            type="password" 
+            name="password" 
+            placeholder="Password" 
+            required 
+            minlength="8"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" 
+            title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one symbol."
+            class="p-3 border rounded-lg">
+        <p class="text-sm text-gray-500">
+            Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one symbol.
+        </p>
+        <button type="submit" class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600">Register</button>
+    </form>
+    <p class="text-center mt-4">Already have an account? <a href="/login" class="text-blue-500 hover:underline">Login here</a></p>
+</div>
+<%- include('partials/footer.ejs') %>

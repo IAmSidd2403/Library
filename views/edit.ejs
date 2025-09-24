@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container mx-auto p-5 bg-white rounded-lg shadow-lg max-w-4xl mt-10">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Edit Book</h1>
+
+    <form action="/edit/<%= book.id %>" method="POST" class="flex flex-col gap-4 p-5 border border-gray-300 rounded-lg mb-8">
+        <h2 class="text-xl font-semibold text-gray-700">Update Book Details</h2>
+        <input type="text" name="title" placeholder="Title" value="<%= book.title %>" required class="p-3 border border-gray-300 rounded-lg">
+        <input type="text" name="authors" placeholder="Author(s)" value="<%= book.authors %>" class="p-3 border border-gray-300 rounded-lg">
+        <input type="text" name="isbn" placeholder="ISBN (for cover image)" value="<%= book.isbn %>" class="p-3 border border-gray-300 rounded-lg">
+        <input type="text" name="cover_id" placeholder="Open Library Cover ID" value="<%= book.cover_id %>" class="p-3 border border-gray-300 rounded-lg">
+        <input type="number" name="rating" placeholder="Rating (1-5)" min="1" max="5" value="<%= book.rating %>" class="p-3 border border-gray-300 rounded-lg">
+        <textarea name="review" placeholder="Your review" class="p-3 border border-gray-300 rounded-lg"><%= book.review %></textarea>
+        <textarea name="notes" placeholder="Notes/Summary" class="p-3 border border-gray-300 rounded-lg"><%= book.notes %></textarea>
+        <input type="date" name="read_date" value="<%= new Date(book.read_date).toISOString().split('T')[0] %>" class="p-3 border border-gray-300 rounded-lg">
+        <button type="submit" class="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">Update Book</button>
+    </form>
+</div>
+
+<%- include('partials/footer.ejs') %>
