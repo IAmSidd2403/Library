@@ -30,8 +30,8 @@ This project was built as a **capstone** to demonstrate proficiency in **Node.js
 ## 🚀 Setup and Installation
 
 ### 2. Install dependencies
-```bash```
-npm install
+```bash npm install ```
+
 
 
 
