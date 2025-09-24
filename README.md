@@ -45,7 +45,8 @@ This project was built as a **capstone** to demonstrate proficiency in **Node.js
 
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name```
+cd your-repo-name
+```
 
 ### 3. Database setup
 
