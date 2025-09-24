@@ -37,7 +37,8 @@ cd your-repo-name
 ```
 
 ### 2. Install dependencies
-```bash npm install
+```bash 
+npm install
 ```
 
 
@@ -54,6 +55,7 @@ cd your-repo-name
 ### 3. Database setup
 
 **Create a PostgreSQL database and run the following SQL commands to create tables:**
+
 *users Table*
 ```sql
 CREATE TABLE users (
@@ -117,7 +119,7 @@ nodemon index.js
 ![Register Page](screenshots/register.png)
 
 ### 📖 Library
-<img src="screenshots/Library.png" alt="Library" width="600"/>
+<img src="screenshots/library.png" alt="Library" width="600"/>
 
 ### 📖 added Books
 <img src="screenshots/added_books.png" alt="Bookshelf" width="600"/>
